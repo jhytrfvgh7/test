@@ -30,6 +30,10 @@
     rows.forEach(row => {
         const columns = row.split(',');
 
+        // Extract the URL from the newMedia column
+        const urlMatch = columns[2].match(/"url"":""([^"]+)""/);
+        const url = urlMatch ? urlMatch[1] : '';
+
         // Create audio list item
         const audioListItem = document.createElement('div');
         audioListItem.className = 'audio-list-item';
@@ -40,7 +44,7 @@
 
         // Create source element
         const sourceElement = document.createElement('source');
-        sourceElement.src = columns[2].replace(/"/g, ''); // Extracting the URL and removing quotes
+        sourceElement.src = url;
         sourceElement.type = 'audio/mpeg';
 
         // Create paragraph element for text
