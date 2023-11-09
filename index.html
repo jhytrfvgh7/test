@@ -200,68 +200,6 @@
         
     
     </div>
-    <script>
-    document.getElementById("newAudioItemForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        // Get form input values
-        const newWord = document.getElementById("newWord").value;
-        const newDefinition = document.getElementById("newDefinition").value;
-        const newMedia = document.getElementById("newMedia").files[0];
-
-        if (newWord && newDefinition && newMedia) {
-            // Create a FormData object
-            const formData = new FormData();
-
-            // Append form data
-            formData.append("newWord", newWord);
-            formData.append("newDefinition", newDefinition);
-            formData.append("newMedia", newMedia);
-
-            // Send form data to Netlify
-            fetch("/", {
-                method: "POST",
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data); // Log the response from Netlify
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-
-            // Create a new audio item div
-            const newAudioItem = document.createElement("div");
-            newAudioItem.className = "audio-list-item";
-
-            // Create audio element
-            const audioElement = document.createElement("audio");
-            audioElement.controls = true;
-            const sourceElement = document.createElement("source");
-            sourceElement.src = URL.createObjectURL(newMedia);
-            sourceElement.type = "audio/mpeg";
-            audioElement.appendChild(sourceElement);
-
-            // Create definition paragraph
-            const definitionParagraph = document.createElement("p");
-            definitionParagraph.textContent = `${newWord}: ${newDefinition}`;
-
-            // Append audio and definition to the new audio item
-            newAudioItem.appendChild(audioElement);
-            newAudioItem.appendChild(definitionParagraph);
-
-            // Append the new audio item to the audio list
-            const audioList = document.querySelector(".audio-list");
-            audioList.appendChild(newAudioItem);
-
-            // Clear form inputs
-            document.getElementById("newWord").value = "";
-            document.getElementById("newDefinition").value = "";
-            document.getElementById("newMedia").value = "";
-        }
-    });
-</script>
 
 </body>
 </html>
