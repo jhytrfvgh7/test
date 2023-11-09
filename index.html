@@ -50,10 +50,15 @@
         const textElement = document.createElement('p');
         textElement.textContent = columns[0] + ': ' + columns[1];
 
+        // Create message for browsers that don't support audio
+        const notSupportedMessage = document.createElement('p');
+        notSupportedMessage.textContent = 'Your browser does not support the audio element.';
+
         // Append elements
         audioElement.appendChild(sourceElement);
         audioListItem.appendChild(audioElement);
         audioListItem.appendChild(textElement);
+        audioListItem.appendChild(notSupportedMessage);
 
         // Append audio list item to the container
         audioListContainer.appendChild(audioListItem);
