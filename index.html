@@ -1,136 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Audio List</title>
-    <style>
-        /* Your existing styles here */
-
-        /* Add a style for the audio list container */
-        #audioList {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        /* Adjust the styling for audio list items as needed */
-        .audio-list-item {
-            margin: 10px 0;
-            flex: 0 0 calc(33.33% - 20px); /* Adjust the width as needed */
-        }
-    </style>
+    <title>Dynamic Audio List</title>
 </head>
-
 <body>
-    <div class="title">
-        <h1><i class="fa regular fa-music"></i> &#160 Audio List</h1>
-    </div>
-    <div class="home-button"><a href="index.html"><i class="fa solid fa-home"> &#160 </i>Home</a></div>
-    <div class="section">
-        <div class="unit-button">Unit 1</div>
-        <!-- Add the audioList container here -->
-        <div id="audioList"></div>
-        <fieldset></fieldset>
-        <div class="new-audio-form">
-            <h2>New Audio Item</h2>
-            <form id="newAudioItemForm">
-                <div class="input-container">
-                    <input type="text" id="newWord" name="newWord" placeholder="Word, expression,..." required>
-                    <input type="text" id="newDefinition" name="newDefinition" placeholder="Definition,..." required>
-                </div>
-                <label for="newMedia">Media mp3:</label>
-                <input type="file" id="newMedia" name="newMedia" accept=".mp3" required>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
 
-    <!-- Add the script at the end of the body -->
-    <script>
-        const csvData = `newWord,newDefinition,newMedia,ip,user_agent,referrer,created_at
-            "저는 서울에 살아요","I live in Seoul","{""filename"":""4.mp3"",""type"":""file"",""size"":7392,""url"":""https://d33wubrfki0l68.cloudfront.net/98cc5aa3-0536-42bb-a667-3ebed428d514/4.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:53.240Z"
-            "만나서 반가워","Nice to meet you","{""filename"":""2.mp3"",""type"":""file"",""size"":6336,""url"":""https://d33wubrfki0l68.cloudfront.net/8c80afa3-b570-4e0d-b789-8d77dbfa1b4a/2.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:06.168Z"
-            "안녕하세요","Hello","{""filename"":""1.mp3"",""type"":""file"",""size"":5088,""url"":""https://d33wubrfki0l68.cloudfront.net/fd6c9cb1-1fdc-459f-8a6e-f412e8eb15c3/1.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:06:42.026Z"
-            "네","yes","{""filename"":""translate_tts.mp3"",""type"":""file"",""size"":2976,""url"":""https://d33wubrfki0l68.cloudfront.net/a425d086-3289-4076-aaf4-05cd41d6f580/translate_tts.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T18:33:17.999Z`;
+<div id="audioList"></div>
 
-        // Split CSV data into rows
-        const rows = csvData.trim().split('\n');
+<script>
+    const csvData = `newWord,newDefinition,newMedia,ip,user_agent,referrer,created_at
+        "저는 서울에 살아요","I live in Seoul","{""filename"":""4.mp3"",""type"":""file"",""size"":7392,""url"":""https://d33wubrfki0l68.cloudfront.net/98cc5aa3-0536-42bb-a667-3ebed428d514/4.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:53.240Z"
+        "만나서 반가워","Nice to meet you","{""filename"":""2.mp3"",""type"":""file"",""size"":6336,""url"":""https://d33wubrfki0l68.cloudfront.net/8c80afa3-b570-4e0d-b789-8d77dbfa1b4a/2.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:06.168Z"
+        "안녕하세요","Hello","{""filename"":""1.mp3"",""type"":""file"",""size"":5088,""url"":""https://d33wubrfki0l68.cloudfront.net/fd6c9cb1-1fdc-459f-8a6e-f412e8eb15c3/1.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:06:42.026Z"
+        "네","yes","{""filename"":""translate_tts.mp3"",""type"":""file"",""size"":2976,""url"":""https://d33wubrfki0l68.cloudfront.net/a425d086-3289-4076-aaf4-05cd41d6f580/translate_tts.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T18:33:17.999Z`;
 
-        // Get header and remove it from rows
-        const header = rows.shift().split(',');
+    // Split CSV data into rows
+    const rows = csvData.trim().split('\n');
 
-        // Process each row
-        rows.forEach(row => {
-            const columns = row.split(',');
+    // Get header and remove it from rows
+    const header = rows.shift().split(',');
 
-            // Extract relevant information
-            const word = columns[0].replace(/"/g, '');
-            const translation = columns[1].replace(/"/g, '');
-            const mediaDetails = JSON.parse(columns[2].replace(/""/g, '"'));
-            const url = mediaDetails.url;
+    // Process each row
+    rows.forEach(row => {
+        const columns = row.split(',');
 
-            // Create new audio list item
-            const audioListItem = document.createElement('div');
-            audioListItem.className = 'audio-list-item';
+        // Extract relevant information
+        const word = columns[0].replace(/"/g, '');
+        const translation = columns[1].replace(/"/g, '');
+        const mediaDetails = JSON.parse(columns[2].replace(/""/g, '"'));
+        const url = mediaDetails.url;
 
-            const audioElement = document.createElement('audio');
-            audioElement.controls = true;
+        // Create new audio list item
+        const audioListItem = document.createElement('div');
+        audioListItem.className = 'audio-list-item';
 
-            const sourceElement = document.createElement('source');
-            sourceElement.src = url;
-            sourceElement.type = 'audio/mpeg';
+        const audioElement = document.createElement('audio');
+        audioElement.controls = true;
 
-            const textElement = document.createElement('p');
-            textElement.textContent = `${word}: ${translation}`;
+        const sourceElement = document.createElement('source');
+        sourceElement.src = url;
+        sourceElement.type = 'audio/mpeg';
 
-            audioElement.appendChild(sourceElement);
-            audioListItem.appendChild(audioElement);
-            audioListItem.appendChild(textElement);
+        const textElement = document.createElement('p');
+        textElement.textContent = `${word}: ${translation}`;
 
-            // Append audioListItem to the audioList container
-            document.getElementById('audioList').appendChild(audioListItem);
-        });
+        audioElement.appendChild(sourceElement);
+        audioListItem.appendChild(audioElement);
+        audioListItem.appendChild(textElement);
 
-        // Add event listener for form submission
-        document.getElementById('newAudioItemForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            // Handle form submission logic here
-            // Extract values from form inputs
-            const newWord = document.getElementById('newWord').value;
-            const newDefinition = document.getElementById('newDefinition').value;
-            const newMedia = document.getElementById('newMedia').value;
+        // Append audioListItem to the audioList container
+        document.getElementById('audioList').appendChild(audioListItem);
+    });
+</script>
 
-            // Create new audio list item for the submitted form data
-            const audioListItem = document.createElement('div');
-            audioListItem.className = 'audio-list-item';
-
-            const audioElement = document.createElement('audio');
-            audioElement.controls = true;
-
-            const sourceElement = document.createElement('source');
-            sourceElement.src = newMedia;
-            sourceElement.type = 'audio/mpeg';
-
-            const textElement = document.createElement('p');
-            textElement.textContent = `${newWord}: ${newDefinition}`;
-
-            audioElement.appendChild(sourceElement);
-            audioListItem.appendChild(audioElement);
-            audioListItem.appendChild(textElement);
-
-            // Append audioListItem to the audioList container
-            document.getElementById('audioList').appendChild(audioListItem);
-
-            // Clear form inputs
-            document.getElementById('newWord').value = '';
-            document.getElementById('newDefinition').value = '';
-            document.getElementById('newMedia').value = '';
-        });
-    </script>
 </body>
-
 </html>
