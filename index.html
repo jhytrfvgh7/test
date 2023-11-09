@@ -1,123 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio List</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    body {
-      text-align: center;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Audio List</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            background-image: url(image2.jpg);
+            padding: 0;
+            margin: 0;
+        }
 
-    h1 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .title {
+            color: #ffffff;
+            padding: 20px;
+        }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-    }
+        .section {
+            background-color: #c6c6c651;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .container {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
+        .section label {
+            font-weight: bold;
+        }
 
-    .audio-list {
-      text-align: left;
-    }
+        .section input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            margin: 10px 0;
+        }
 
-    .audio-list-item {
-      margin-bottom: 10px;
-    }
-  </style>
+        .audio-list {
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .audio-list-item {
+            margin: 10px 0;
+            flex: 0 0 calc(33.33% - 20px);
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            border-bottom: 3px solid #3b3b4f;
+            align-self: flex-end;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .unit-button {
+            background-color: #fefefe3f;
+            color: #040404;
+            border: none;
+            border-radius: 25px;
+            padding: 5px 50px;
+            font-weight: light;
+            position: absolute;
+            font-size: 20px;
+            top: 100px;
+            left: 20px;
+        }
+
+        .home-button {
+            background-color: #fefefe3f;
+            width: 100px;
+            height: 30px;
+            color: #040404;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 7px;
+            font-weight: light;
+            position: absolute;
+            font-size: 20px;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .home-button:hover {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.249);
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 30px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #newWord,
+        #newDefinition {
+            padding: 10px;
+            border: 2px solid #ffffff;
+            background-color: rgba(240, 248, 255, 0.367);
+            border-radius: 20px;
+            width: 300px;
+            margin: 0;
+        }
+
+        #newWord::placeholder,
+        #newDefinition::placeholder {
+            color: black;
+        }
+
+        button {
+            border-radius: 10px;
+            width: 100px;
+            font-size: 15px;
+            background-color: rgba(255, 255, 255, 0.386);
+        }
+
+        button:hover {
+            background-color: rgba(10, 10, 10, 0.505);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-
-<h1><i class="fas fa-music"></i> Audio List</h1>
-
-<nav>
-  <a href="#"><i class="fas fa-home"></i> Home</a>
-  <a href="#"><i class="fas fa-cog"></i> Settings</a>
-</nav>
-
-<div class="container">
-  <div class="audio-list">
-    <!-- List of audio files and their meanings -->
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>안녕하세요: Hello</p>
+    <div class="title">
+        <h1><i class="fa regular fa-music"></i> &#160 Audio List</h1>
     </div>
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="2.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>만나서 반가워: Nice to meet you</p>
+    <div class="home-button"><a href="index.html"><i class="fa solid fa-home"> &#160 </i>Home</a></div>
+    <div class="section">
+        <div class="unit-button">Unit 1</div>
+        <div class="audio-list">
+            <!-- List of audio files and their meanings -->
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>안녕하세요: Hello</p>
+            </div>
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>만나서 반가워: Nice to meet you</p>
+            </div>
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="3.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>제 이름은 김성찬이에요: My name is Seong Chan Kim</p>
+            </div>
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="4.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>저는 서울에 살아요: I live in Seoul</p>
+            </div>
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="5.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>어디에 사세요: Where do you live?</p>
+            </div>
+            <div class="audio-list-item">
+                <audio controls>
+                    <source src="6.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>반갑습니다: Nice to meet you</p>
+            </div>
+            <!-- Add more audio items as needed -->
+        </div>
+        <fieldset></fieldset>
+        <div class="new-audio-form">
+            <h2>New Audio Item</h2>
+            <form id="newAudioItemForm" netlify>
+                <div class="input-container">
+                    <input type="text" id="newWord" name="newWord" placeholder="Word, expression,..." required>
+                    <input type="text" id="newDefinition" name="newDefinition" placeholder="Definition,..." required>
+                </div>
+                <label for="newMedia">Media mp3:</label>
+                <input type="file" id="newMedia" name="newMedia" accept=".mp3" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>제 이름은 김성찬이에요: My name is Seong Chan Kim</p>
-    </div>
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="4.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>저는 서울에 살아요: I live in Seoul</p>
-    </div>
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="5.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>어디에 사세요: Where do you live?</p>
-    </div>
-    <div class="audio-list-item">
-      <audio controls>
-        <source src="6.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <p>반갑습니다: Nice to meet you</p>
-    </div>
-  </div>
-
-  <!-- Form for adding new audio items -->
-  <form name="fileForm" enctype="multipart/form-data" data-netlify="true">
-    <p>
-      <label>
-        <span>Word:</span>
-        <input name="word" type="text" required/>
-      </label>
-    </p>
-    <p>
-      <label>
-        <span>Definition:</span>
-        <input name="definition" type="text" required/>
-      </label>
-    </p>
-    <p>
-      <label>
-        <span>Add file:</span>
-        <input name="file" type="file" accept=".mp3" required/>
-      </label>
-    </p>
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<p class="result"></p>
-
 </body>
 </html>
