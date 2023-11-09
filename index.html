@@ -30,9 +30,6 @@
     rows.forEach(row => {
         const columns = row.split(',');
 
-        // Extract URL from the "url" property in the third column
-        const url = JSON.parse(columns[2]).url.replace(/"/g, '');
-
         // Create audio list item
         const audioListItem = document.createElement('div');
         audioListItem.className = 'audio-list-item';
@@ -43,22 +40,17 @@
 
         // Create source element
         const sourceElement = document.createElement('source');
-        sourceElement.src = url;
+        sourceElement.src = columns[2].replace(/"/g, ''); // Extracting the URL and removing quotes
         sourceElement.type = 'audio/mpeg';
 
         // Create paragraph element for text
         const textElement = document.createElement('p');
         textElement.textContent = columns[0] + ': ' + columns[1];
 
-        // Create message for browsers that don't support audio
-        const notSupportedMessage = document.createElement('p');
-        notSupportedMessage.textContent = 'Your browser does not support the audio element.';
-
         // Append elements
         audioElement.appendChild(sourceElement);
         audioListItem.appendChild(audioElement);
         audioListItem.appendChild(textElement);
-        audioListItem.appendChild(notSupportedMessage);
 
         // Append audio list item to the container
         audioListContainer.appendChild(audioListItem);
