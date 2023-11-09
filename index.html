@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Audio List</title>
 </head>
@@ -12,10 +11,10 @@
 
 <script>
     const csvData = `newWord,newDefinition,newMedia,ip,user_agent,referrer,created_at
-        "저는 서울에 살아요","I live in Seoul","{""filename"":""4.mp3"",""type"":""file"",""size"":7392,""url"":""https://d33wubrfki0l68.cloudfront.net/98cc5aa3-0536-42bb-a667-3ebed428d514/4.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:53.240Z"
-        "만나서 반가워","Nice to meet you","{""filename"":""2.mp3"",""type"":""file"",""size"":6336,""url"":""https://d33wubrfki0l68.cloudfront.net/8c80afa3-b570-4e0d-b789-8d77dbfa1b4a/2.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:06.168Z"
-        "안녕하세요","Hello","{""filename"":""1.mp3"",""type"":""file"",""size"":5088,""url"":""https://d33wubrfki0l68.cloudfront.net/fd6c9cb1-1fdc-459f-8a6e-f412e8eb15c3/1.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:06:42.026Z"
-        "네","yes","{""filename"":""translate_tts.mp3"",""type"":""file"",""size"":2976,""url"":""https://d33wubrfki0l68.cloudfront.net/a425d086-3289-4076-aaf4-05cd41d6f580/translate_tts.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T18:33:17.999Z`;
+    "저는 서울에 살아요","I live in Seoul","{""filename"":""4.mp3"",""type"":""file"",""size"":7392,""url"":""https://d33wubrfki0l68.cloudfront.net/98cc5aa3-0536-42bb-a667-3ebed428d514/4.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:53.240Z"
+    "만나서 반가워","Nice to meet you","{""filename"":""2.mp3"",""type"":""file"",""size"":6336,""url"":""https://d33wubrfki0l68.cloudfront.net/8c80afa3-b570-4e0d-b789-8d77dbfa1b4a/2.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:07:06.168Z"
+    "안녕하세요","Hello","{""filename"":""1.mp3"",""type"":""file"",""size"":5088,""url"":""https://d33wubrfki0l68.cloudfront.net/fd6c9cb1-1fdc-459f-8a6e-f412e8eb15c3/1.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T19:06:42.026Z"
+    "네","yes","{""filename"":""translate_tts.mp3"",""type"":""file"",""size"":2976,""url"":""https://d33wubrfki0l68.cloudfront.net/a425d086-3289-4076-aaf4-05cd41d6f580/translate_tts.mp3""}","77.231.235.57","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0","https://main--endearing-sopapillas-0b71f3.netlify.app/audio_list","2023-11-09T18:33:17.999Z`;
 
     // Split CSV data into rows
     const rows = csvData.trim().split('\n');
