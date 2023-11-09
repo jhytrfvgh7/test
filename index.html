@@ -30,9 +30,8 @@
     rows.forEach(row => {
         const columns = row.split(',');
 
-        // Extract the URL from the newMedia column
-        const urlMatch = columns[2].match(/"url"":""([^"]+)""/);
-        const url = urlMatch ? urlMatch[1] : '';
+        // Extract URL from the "url" property in the third column
+        const url = JSON.parse(columns[2]).url.replace(/"/g, '');
 
         // Create audio list item
         const audioListItem = document.createElement('div');
